@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "ava": "^0.16.0",
+    "babel-preset-react-app": "^0.2.1",
+    "cross-env": "^3.0.0",
+    "ignore-styles": "^5.0.1",
+    "jsdom": "^9.5.0",
     "react-scripts": "0.6.1"
   },
   "dependencies": {
@@ -12,7 +17,18 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "cross-env NODE_ENV=test ava",
     "eject": "react-scripts eject"
+  },
+  "babel": {
+    "presets": "react-app"
+  },
+  "ava": {
+    "babel": "inherit",
+    "require": [
+      "babel-register",
+      "ignore-styles",
+      "./src/test-setup"
+    ]
   }
 }
